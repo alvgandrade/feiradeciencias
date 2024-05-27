@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados | Fast Fashion</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+  <a href="results.html"><button class="go" id="Voltar">Voltar</button> </a>
+  <a href="thankyou.html"><button class="go" id="Continuar">Continuar</button> </a>
+  <h1 id="title3">Resultados</h1>
+  <div class="video">
+    <video id="video2"></video>
+   </div>
+   <div id="co2">
+   <button type="button" class="collapsible" onclick="document.getElementById('demo1').innerHTML = getRndInteger1(32,60)">Emissões de CO2</button>
+<div class="content">
+  <p>Você sabia que ao produzir uma roupa se gasta toneladas de CO2? Sua roupa, em média, gastou <p id="demo1"></p></p>
+</div>
+</div>
+<button type="button" class="collapsible" onclick="document.getElementById('demo2').innerHTML = getRndInteger2(2.700,5.800)">Gasto de água</button>
+<div class="content">
+  <p>Roupas podem gastar muita água em sua prudução. O seu look, gasta aproximadamente <p id="demo2"></p></p>
+</div>
+
+
+
+   <script>
+     navigator.mediaDevices.getUserMedia()
+     const video = document.querySelector('#video2');
+     navigator.mediaDevices.getUserMedia({ video: true })
+     .then((mediaStream) => {
+     video.srcObject = mediaStream;
+     video.play();
+     })
+     .catch((err) => {
+     console.log('Não há permissões para acessar a webcam');
+      });
+
+      var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  }); 
+}
+function getRndInteger1(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+function getRndInteger2(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+   </script>
+</body>
+</html>

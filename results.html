@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Fashion</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="icon.png">
+</head>
+<body>
+    <div class="video">
+     <video id="video"></video>
+    </div>
+    <div id="laser"></div>
+    <button class="button2" onclick="on(); ono()">Começar escanemento</button>
+    <div id="overlay">
+        <div id="text">
+          <div class="loader"></div>
+          <div>
+             <a href="survey.html"><button id="resultsbutton" class="results">Mostre-me os resultados</button></a>
+         </div>
+        </div>
+    <script>
+        navigator.mediaDevices.getUserMedia()
+     const video = document.querySelector('#video');
+     navigator.mediaDevices.getUserMedia({ video: true })
+     .then((mediaStream) => {
+     video.srcObject = mediaStream;
+     video.play();
+     })
+     .catch((err) => {
+     console.log('Não há permissões para acessar a webcam');
+      });
+ 
+
+    function on() {
+        document.getElementById("laser").style.visibility = "visible";
+    }
+    function off() {
+        document.getElementById("laser").style.visibility = "hidden";
+    }
+
+    function ono() {
+       document.getElementById("overlay").style.display = "block";
+    }
+
+    function offo() {
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    setTimeout(function(){
+    document.getElementById('overlay').style.visibility = "visible";
+    },6000);
+
+    setTimeout(function(){
+    document.getElementById('resultsbutton').style.visibility = "visible";
+    },9000);
+    </script>
+</body>
+</html>
